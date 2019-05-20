@@ -4,6 +4,7 @@ import Foundation
 public struct Event {
     public var subComponents: [CalendarComponent] = []
     public var otherAttrs = [String:String]()
+    public var roles: [EventRole] = []
 
     // required
     public var uid: String!
@@ -14,13 +15,18 @@ public struct Event {
     public var location: String?
     public var summary: String?
     public var descr: String?
-    // public var class: some enum type?
+    public var `class`: String?
     public var dtstart: Date?
     public var dtend: Date?
+    public var status: String?
 
     public init(uid: String? = NSUUID().uuidString, dtstamp: Date? = Date()) {
         self.uid = uid
         self.dtstamp = dtstamp
+    }
+
+    public func firstAlarm() -> Alarm? {
+        return subComponents.compactMap({ $0 as? Alarm }).first
     }
 }
 
@@ -31,11 +37,17 @@ extension Event: CalendarComponent {
         if let uid = uid {
             str += "UID:\(uid)\n"
         }
+        if let cls = self.class {
+            str += "CLASS:\(cls)\n"
+        }
         if let dtstamp = dtstamp {
             str += "DTSTAMP:\(dtstamp.toString())\n"
         }
         if let summary = summary {
             str += "SUMMARY:\(summary)\n"
+        }
+        if let location = location {
+            str += "LOCATION:\(location)\n"
         }
         if let descr = descr {
             str += "DESCRIPTION:\(descr)\n"
@@ -45,6 +57,13 @@ extension Event: CalendarComponent {
         }
         if let dtend = dtend {
             str += "DTEND:\(dtend.toString())\n"
+        }
+        if let status = status {
+            str += "STATUS:\(status)\n"
+        }
+
+        for role in roles {
+            str += "\(role.toCal())\n"
         }
 
         for (key, val) in otherAttrs {
@@ -65,6 +84,8 @@ extension Event: IcsElement {
         switch attr {
         case "UID":
             uid = value
+        case "CLASS":
+            self.class = value
         case "DTSTAMP":
             dtstamp = value.toDate()
         case "DTSTART":
@@ -77,6 +98,15 @@ extension Event: IcsElement {
             summary = value
         case "DESCRIPTION":
             descr = value
+        case "STATUS":
+            status = value
+        case "LOCATION":
+            location = value
+        case _ where attr.hasPrefix("ORGANIZER;"),
+             _ where attr.hasPrefix("ATTENDEE;"):
+            if let eventRole = EventRole.eventForm(key: attr, value: value) {
+                roles.append(eventRole)
+            }
         default:
             otherAttrs[attr] = value
         }

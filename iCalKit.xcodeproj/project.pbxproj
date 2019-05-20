@@ -54,6 +54,10 @@
 		41A675901F5D7EB800E8EC55 /* example.ics in Resources */ = {isa = PBXBuildFile; fileRef = 41CE90051F5D572D00C50155 /* example.ics */; };
 		41A675911F5D7EB800E8EC55 /* example.ics in Resources */ = {isa = PBXBuildFile; fileRef = 41CE90051F5D572D00C50155 /* example.ics */; };
 		52D6D9871BEFF229002C0205 /* iCalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* iCalKit.framework */; };
+		62CCB88922925A7D00569AC9 /* EventRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCB88822925A7D00569AC9 /* EventRole.swift */; };
+		62CCB8A222928E2B00569AC9 /* EventRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCB88822925A7D00569AC9 /* EventRole.swift */; };
+		62CCB8A322928E2B00569AC9 /* EventRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCB88822925A7D00569AC9 /* EventRole.swift */; };
+		62CCB8A422928E2C00569AC9 /* EventRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCB88822925A7D00569AC9 /* EventRole.swift */; };
 		DD7502881C68FEDE006590AF /* iCalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* iCalKit.framework */; };
 		DD7502921C690C7A006590AF /* iCalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* iCalKit.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +105,7 @@
 		52D6D9E21BEFFF6E002C0205 /* iCalKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* iCalKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* iCalKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62CCB88822925A7D00569AC9 /* EventRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRole.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* iCalKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iCalKit.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* iCalKitTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iCalKitTests.plist; sourceTree = "<group>"; };
 		DD75027A1C68FCFC006590AF /* iCalKit-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iCalKit-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +184,7 @@
 				41CE90091F5D576800C50155 /* Alarm.swift */,
 				41CE900A1F5D576800C50155 /* Calendar.swift */,
 				41CE900D1F5D576800C50155 /* Event.swift */,
+				62CCB88822925A7D00569AC9 /* EventRole.swift */,
 				41CE90111F5D576800C50155 /* Parser.swift */,
 				41CE90131F5D578000C50155 /* Protocols */,
 				41CE90141F5D579000C50155 /* Extensions */,
@@ -430,7 +436,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = iCalKit;
 				TargetAttributes = {
 					52D6D97B1BEFF229002C0205 = {
@@ -468,6 +474,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 52D6D9721BEFF229002C0205;
@@ -548,6 +555,7 @@
 			files = (
 				41A675881F5D7C8500E8EC55 /* Event.swift in Sources */,
 				41A6758E1F5D7C8500E8EC55 /* iCalError.swift in Sources */,
+				62CCB88922925A7D00569AC9 /* EventRole.swift in Sources */,
 				41A675851F5D7C8500E8EC55 /* iCal.swift in Sources */,
 				41A6758A1F5D7C8500E8EC55 /* IcsElement.swift in Sources */,
 				41A675891F5D7C8500E8EC55 /* Parser.swift in Sources */,
@@ -573,6 +581,7 @@
 			files = (
 				41A675741F5D7C8400E8EC55 /* Event.swift in Sources */,
 				41A6757A1F5D7C8400E8EC55 /* iCalError.swift in Sources */,
+				62CCB8A322928E2B00569AC9 /* EventRole.swift in Sources */,
 				41A675711F5D7C8400E8EC55 /* iCal.swift in Sources */,
 				41A675761F5D7C8400E8EC55 /* IcsElement.swift in Sources */,
 				41A675751F5D7C8400E8EC55 /* Parser.swift in Sources */,
@@ -590,6 +599,7 @@
 			files = (
 				41A6756A1F5D7C8400E8EC55 /* Event.swift in Sources */,
 				41A675701F5D7C8400E8EC55 /* iCalError.swift in Sources */,
+				62CCB8A422928E2C00569AC9 /* EventRole.swift in Sources */,
 				41A675671F5D7C8400E8EC55 /* iCal.swift in Sources */,
 				41A6756C1F5D7C8400E8EC55 /* IcsElement.swift in Sources */,
 				41A6756B1F5D7C8400E8EC55 /* Parser.swift in Sources */,
@@ -607,6 +617,7 @@
 			files = (
 				41A6757E1F5D7C8500E8EC55 /* Event.swift in Sources */,
 				41A675841F5D7C8500E8EC55 /* iCalError.swift in Sources */,
+				62CCB8A222928E2B00569AC9 /* EventRole.swift in Sources */,
 				41A6757B1F5D7C8400E8EC55 /* iCal.swift in Sources */,
 				41A675801F5D7C8500E8EC55 /* IcsElement.swift in Sources */,
 				41A6757F1F5D7C8500E8EC55 /* Parser.swift in Sources */,
@@ -659,6 +670,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -667,12 +679,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -705,7 +719,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -716,6 +730,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -724,12 +739,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -754,7 +771,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -782,7 +799,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -805,7 +822,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -820,7 +837,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -835,7 +852,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -856,7 +873,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -880,7 +897,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -903,7 +920,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -927,7 +944,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -953,7 +970,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -978,7 +995,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -995,7 +1012,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1013,7 +1030,7 @@
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1027,7 +1044,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -1043,7 +1060,7 @@
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;

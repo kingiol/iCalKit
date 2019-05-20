@@ -19,7 +19,8 @@ internal class Parser {
         var inAlarm = false
         var currentAlarm: Alarm?
 
-        for (_ , line) in icsContent.enumerated() {
+        for (_ , rawline) in icsContent.enumerated() where !rawline.isEmpty {
+            let line = rawline.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             switch line {
             case "BEGIN:VCALENDAR":
                 inCalendar = true
@@ -53,7 +54,7 @@ internal class Parser {
             }
 
             guard let (key, value) = line.toKeyValuePair(splittingOn: ":") else {
-                // print("(key, value) is nil") // DEBUG
+//                print("(key, value): line: \(line) is nil") // DEBUG
                 continue
             }
 
@@ -70,6 +71,6 @@ internal class Parser {
             }
         }
 
-        return completeCal.flatMap{ $0 }
+        return completeCal.compactMap{ $0 }
     }
 }

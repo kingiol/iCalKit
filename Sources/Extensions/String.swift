@@ -17,4 +17,8 @@ extension String {
     func toDate() -> Date? {
         return iCal.dateFormatter.date(from: self)
     }
+
+    func getIntNumber() -> [Int] {
+        return components(separatedBy: CharacterSet.decimalDigits.inverted).compactMap(Int.init)
+    }
 }
