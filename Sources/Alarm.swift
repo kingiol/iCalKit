@@ -2,6 +2,7 @@ import Foundation
 
 public enum AlarmTrigger {
 
+    case now
     case minutes(number: Int)
     case hours(number: Int)
     case days(number: Int)
@@ -10,14 +11,16 @@ public enum AlarmTrigger {
 
 extension AlarmTrigger: CalendarComponent {
     public func toCal() -> String {
-        var str = "TRIGGER;VALUE=DURATION:-P"
+        var str = "TRIGGER;VALUE=DURATION:"
         switch self {
         case let .minutes(number):
-            str += "T\(number)M"
+            str += "-PT\(number)M"
         case let .hours(number):
-            str += "T\(number)H"
+            str += "-PT\(number)H"
         case let .days(number):
-            str += "\(number)D"
+            str += "-P\(number)D"
+        case .now:
+            str += "PT0S"
         }
         return str
     }
@@ -43,6 +46,8 @@ extension Alarm: IcsElement {
                     trigger = AlarmTrigger.hours(number: number)
                 } else if indi == "D".lowercased() {
                     trigger = AlarmTrigger.days(number: number)
+                } else if number == 0 {
+                    trigger = AlarmTrigger.now
                 } else {
                     otherAttrs[attr] = value
                 }
