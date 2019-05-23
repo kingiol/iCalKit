@@ -7,6 +7,19 @@ public enum AlarmTrigger {
     case hours(number: Int)
     case days(number: Int)
 
+    public var seconds: Int {
+        switch self {
+        case .now:
+            return 0
+        case .minutes(let number):
+            return number * 60
+        case .hours(let number):
+            return number * 60 * 60
+        case .days(let number):
+            return number * 24 * 60 * 60
+        }
+    }
+
 }
 
 extension AlarmTrigger: CalendarComponent {
