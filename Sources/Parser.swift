@@ -19,9 +19,30 @@ internal class Parser {
         var inAlarm = false
         var currentAlarm: Alarm?
 
-        for (_ , rawline) in icsContent.enumerated() where !rawline.isEmpty {
-            let line = rawline.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            switch line {
+
+        var previousLine = ""
+        for (index, rawLine) in icsContent.enumerated() {
+            let currentLine = rawLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+
+            var progressLine: String = ""
+
+            if !currentLine.isEmpty {
+                if rawLine.hasPrefix(" ") {
+                    previousLine += currentLine
+                } else {
+                    if !previousLine.isEmpty {
+                        progressLine = previousLine
+                    }
+                    previousLine = currentLine
+                }
+            }
+
+            if index == icsContent.count - 1 && !previousLine.isEmpty {
+                progressLine = previousLine
+            }
+            guard !progressLine.isEmpty else { continue }
+
+            switch progressLine {
             case "BEGIN:VCALENDAR":
                 inCalendar = true
                 currentCalendar = Calendar(withComponents: nil)
@@ -53,7 +74,7 @@ internal class Parser {
                 break
             }
 
-            guard let (key, value) = line.toKeyValuePair(splittingOn: ":") else {
+            guard let (key, value) = progressLine.toKeyValuePair(splittingOn: ":") else {
 //                print("(key, value): line: \(line) is nil") // DEBUG
                 continue
             }

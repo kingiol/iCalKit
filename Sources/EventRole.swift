@@ -17,6 +17,7 @@ public enum PartStat: String {
     case accepted = "ACCEPTED"  // accept
     case tentative = "TENTATIVE"    // maybe
     case declined = "DECLINED"  // declined
+    case needsAction = "NEEDS-ACTION"
 }
 
 public enum RoleType: String {
