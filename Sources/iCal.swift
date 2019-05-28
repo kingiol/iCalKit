@@ -25,7 +25,7 @@ public enum iCal {
     }
 
     private static func parse(_ icsContent: [String]) -> [Calendar] {
-        let parser = Parser(icsContent)
+        let parser = Parser(icsContent + [""])
         do {
             return try parser.read()
         } catch let error {

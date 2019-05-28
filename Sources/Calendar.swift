@@ -27,9 +27,14 @@ public struct Calendar {
         guard var event = firstEvent() else { return }
         let roles = event.roles.filter({ $0.partyType != .organizer && $0.mailto == address })
         var newRoles: [EventRole] = []
-        for var role in roles {
-            role.partStat = partStat
+        if roles.isEmpty {
+            let role = EventRole(partyType: .attendee, partStat: partStat, roleType: .opt, mailto: address)
             newRoles.append(role)
+        } else {
+            for var role in roles {
+                role.partStat = partStat
+                newRoles.append(role)
+            }
         }
 
         let organizer = firstEvent()?.roles.filter({ $0.partyType == .organizer }) ?? []
@@ -79,7 +84,7 @@ extension Calendar: CalendarComponent {
             str += "\(component.toCal())\n"
         }
 
-        str += "END:VCALENDAR"
+        str += "END:VCALENDAR\n"
         return str
     }
 }

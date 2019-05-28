@@ -19,7 +19,6 @@ internal class Parser {
         var inAlarm = false
         var currentAlarm: Alarm?
 
-
         var previousLine = ""
         for (index, rawLine) in icsContent.enumerated() {
             let currentLine = rawLine.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
