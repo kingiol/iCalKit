@@ -15,7 +15,7 @@ public struct Event {
     public var location: String? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("LOCATION") else { return nil }
-            return otherAttrs[key]
+            return otherAttrs[key]?.replacingOccurrences(of: "\\", with: "")
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("LOCATION") else {
@@ -53,24 +53,44 @@ public struct Event {
     public var dtstart: Date? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("DTSTART") else { return nil }
-            return otherAttrs[key]?.toDate()
+            let keyAttribute = key.formatKeyAttribute()
+            if keyAttribute.attributes["VALUE"] == "DATE" {
+                return otherAttrs[key]?.toShortDate()
+            } else {
+                return otherAttrs[key]?.toDate()
+            }
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("DTSTART") else {
                 otherAttrs["DTSTART"] = newValue?.toString(); return }
-            otherAttrs[key] = newValue?.toString()
+            let keyAttribute = key.formatKeyAttribute()
+            if keyAttribute.attributes["VALUE"] == "DATE" {
+                otherAttrs[key] = newValue?.toShortString()
+            } else {
+                otherAttrs[key] = newValue?.toString()
+            }
         }
     }
 
     public var dtend: Date? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("DTEND") else { return nil }
-            return otherAttrs[key]?.toDate()
+            let keyAttribute = key.formatKeyAttribute()
+            if keyAttribute.attributes["VALUE"] == "DATE" {
+                return otherAttrs[key]?.toShortDate()
+            } else {
+                return otherAttrs[key]?.toDate()
+            }
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("DTEND") else {
                 otherAttrs["DTEND"] = newValue?.toString(); return }
-            otherAttrs[key] = newValue?.toString()
+            let keyAttribute = key.formatKeyAttribute()
+            if keyAttribute.attributes["VALUE"] == "DATE" {
+                otherAttrs[key] = newValue?.toShortString()
+            } else {
+                otherAttrs[key] = newValue?.toString()
+            }
         }
     }
 
