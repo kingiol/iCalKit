@@ -39,7 +39,7 @@ public struct Event {
     public var descr: String? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("DESCRIPTION") else { return nil }
-            return otherAttrs[key]
+            return otherAttrs[key]?.replacingOccurrences(of: "\\", with: "")
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("DESCRIPTION") else {
