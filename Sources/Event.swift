@@ -7,8 +7,8 @@ public struct Event {
     public var roles: [EventRole] = []
 
     // required
-    public var uid: String!
-    public var dtstamp: Date!
+    public var uid: String?
+    public var dtstamp: Date?
 
     // optional
 
@@ -177,6 +177,6 @@ public func ==(lhs: Event, rhs: Event) -> Bool {
 
 extension Event: CustomStringConvertible {
     public var description: String {
-        return "\(dtstamp.toString()): \(summary ?? "")"
+        return "\(dtstamp?.toString() ?? ""): \(summary ?? "")"
     }
 }
