@@ -62,6 +62,9 @@
 		6264F81C229FB75000B922F2 /* TZID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6264F81A229FB75000B922F2 /* TZID.swift */; };
 		6264F81D229FB75000B922F2 /* TZID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6264F81A229FB75000B922F2 /* TZID.swift */; };
 		6264F81E229FB75000B922F2 /* TZID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6264F81A229FB75000B922F2 /* TZID.swift */; };
+		6264F821229FD61700B922F2 /* example.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6264F81F229FD57400B922F2 /* example.txt */; };
+		6264F822229FD61700B922F2 /* example.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6264F81F229FD57400B922F2 /* example.txt */; };
+		6264F823229FD61800B922F2 /* example.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6264F81F229FD57400B922F2 /* example.txt */; };
 		62CCB88922925A7D00569AC9 /* EventRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCB88822925A7D00569AC9 /* EventRole.swift */; };
 		62CCB8A222928E2B00569AC9 /* EventRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCB88822925A7D00569AC9 /* EventRole.swift */; };
 		62CCB8A322928E2B00569AC9 /* EventRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CCB88822925A7D00569AC9 /* EventRole.swift */; };
@@ -115,6 +118,7 @@
 		52D6DA0F1BF000BD002C0205 /* iCalKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCalKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6213936C229846A90023F27E /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		6264F81A229FB75000B922F2 /* TZID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZID.swift; sourceTree = "<group>"; };
+		6264F81F229FD57400B922F2 /* example.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = example.txt; sourceTree = "<group>"; };
 		62CCB88822925A7D00569AC9 /* EventRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRole.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* iCalKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iCalKit.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* iCalKitTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iCalKitTests.plist; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 			children = (
 				41CE90051F5D572D00C50155 /* example.ics */,
 				41CE90061F5D572D00C50155 /* iCalKitTests.swift */,
+				6264F81F229FD57400B922F2 /* example.txt */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A675911F5D7EB800E8EC55 /* example.ics in Resources */,
+				6264F821229FD61700B922F2 /* example.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A675901F5D7EB800E8EC55 /* example.ics in Resources */,
+				6264F822229FD61700B922F2 /* example.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A6758F1F5D7EB800E8EC55 /* example.ics in Resources */,
+				6264F823229FD61800B922F2 /* example.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
