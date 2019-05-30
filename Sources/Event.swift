@@ -15,36 +15,36 @@ public struct Event {
     public var location: String? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("LOCATION") else { return nil }
-            return otherAttrs[key]?.replacingOccurrences(of: "\\,", with: ",")
+            return Parser.decode(value: otherAttrs[key])
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("LOCATION") else {
-                otherAttrs["LOCATION"] = newValue; return }
-            otherAttrs[key] = newValue
+                otherAttrs["LOCATION"] = Parser.encode(value: newValue); return }
+            otherAttrs[key] = Parser.encode(value: newValue)
         }
     }
 
     public var summary: String? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("SUMMARY") else { return nil }
-            return otherAttrs[key]
+            return Parser.decode(value: otherAttrs[key])
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("SUMMARY") else {
-                otherAttrs["SUMMARY"] = newValue; return }
-            otherAttrs[key] = newValue
+                otherAttrs["SUMMARY"] = Parser.encode(value: newValue); return }
+            otherAttrs[key] = Parser.encode(value: newValue)
         }
     }
 
     public var descr: String? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("DESCRIPTION") else { return nil }
-            return otherAttrs[key]?.replacingOccurrences(of: "\\,", with: ",").replacingOccurrences(of: "\\n", with: "\n")
+            return Parser.decode(value: otherAttrs[key])
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("DESCRIPTION") else {
-                otherAttrs["DESCRIPTION"] = newValue; return }
-            otherAttrs[key] = newValue
+                otherAttrs["DESCRIPTION"] = Parser.encode(value: newValue); return }
+            otherAttrs[key] = Parser.encode(value: newValue)
         }
     }
 
@@ -131,7 +131,7 @@ extension Event: CalendarComponent {
         }
 
         str += "END:VEVENT"
-        return str
+        return iCal.normalize(cal: str)
     }
 }
 

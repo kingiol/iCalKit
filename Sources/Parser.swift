@@ -93,4 +93,24 @@ internal class Parser {
 
         return completeCal.compactMap{ $0 }
     }
+    
+    static private func doEncodeDecode(value: String?, maps: [String: String]) -> String? {
+        guard var result = value else { return nil }
+        for (from, to) in maps {
+            result = result.replacingOccurrences(of: from, with: to)
+        }
+        return result
+    }
+    
+    // RFC: ctls ; : , "
+    static func decode(value: String?) -> String? {
+        let maps = ["\\r": "\r", "\\n": "\n", "\\;": ";", "\\:": ":", "\\,": ",", "\\\"": "\""]
+        return doEncodeDecode(value: value, maps: maps)
+    }
+    
+    static func encode(value: String?) -> String? {
+        let maps = ["\r": "\\r", "\n": "\\n", ";": "\\;", ":": "\\:", ",": "\\,", "\"": "\\\""]
+        return doEncodeDecode(value: value, maps: maps)
+    }
+    
 }
