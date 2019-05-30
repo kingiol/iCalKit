@@ -158,4 +158,37 @@ END:VCALENDAR
         let event = icals.first?.firstEvent()
         print("...")
     }
+
+    func testUTCDate() {
+        let utcString = "20190530T050000Z"// 2019-05-30 13:00:00
+
+        let date = utcString.toDate()!
+
+        print("utc date: \(date)")
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let string = dateFormatter.string(from: date)
+        print("current: \(string)")
+
+        print("utc string: \(date.toUTCString())")
+    }
+
+    func testDate() {
+
+        let dateString = "20190531T140000"  //DTSTART;TZID=China Standard Time:20190531T140000
+
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyyMMdd'T'HHmmss'Z'"
+        dateFormatter1.timeZone = TZID.timeZone(forTZID: "China Standard Time")
+
+        let date = dateFormatter1.date(from: dateString)!
+
+        print("====== date: \(date)")
+
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let string = dateFormatter2.string(from: date)
+        print("===== current date: \(string)")
+    }
 }

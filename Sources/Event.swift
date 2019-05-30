@@ -53,44 +53,24 @@ public struct Event {
     public var dtstart: Date? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("DTSTART") else { return nil }
-            let keyAttribute = key.formatKeyAttribute()
-            if keyAttribute.attributes["VALUE"] == "DATE" {
-                return otherAttrs[key]?.toShortDate()
-            } else {
-                return otherAttrs[key]?.toDate()
-            }
+            return key.toEventDTDate(time: otherAttrs[key])
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("DTSTART") else {
-                otherAttrs["DTSTART"] = newValue?.toString(); return }
-            let keyAttribute = key.formatKeyAttribute()
-            if keyAttribute.attributes["VALUE"] == "DATE" {
-                otherAttrs[key] = newValue?.toShortString()
-            } else {
-                otherAttrs[key] = newValue?.toString()
-            }
+                otherAttrs["DTSTART"] = newValue?.toUTCString(); return }
+            otherAttrs[key] = newValue?.toDateString(forEventKey: key)
         }
     }
 
     public var dtend: Date? {
         get {
             guard let key = otherAttrs.filterKeyHasPrefix("DTEND") else { return nil }
-            let keyAttribute = key.formatKeyAttribute()
-            if keyAttribute.attributes["VALUE"] == "DATE" {
-                return otherAttrs[key]?.toShortDate()
-            } else {
-                return otherAttrs[key]?.toDate()
-            }
+            return key.toEventDTDate(time: otherAttrs[key])
         }
         set {
             guard let key = otherAttrs.filterKeyHasPrefix("DTEND") else {
-                otherAttrs["DTEND"] = newValue?.toString(); return }
-            let keyAttribute = key.formatKeyAttribute()
-            if keyAttribute.attributes["VALUE"] == "DATE" {
-                otherAttrs[key] = newValue?.toShortString()
-            } else {
-                otherAttrs[key] = newValue?.toString()
-            }
+                otherAttrs["DTEND"] = newValue?.toUTCString(); return }
+            otherAttrs[key] = newValue?.toDateString(forEventKey: key)
         }
     }
 
@@ -117,7 +97,7 @@ extension Event: CalendarComponent {
             str += "CLASS:\(cls)\n"
         }
         if let dtstamp = dtstamp {
-            str += "DTSTAMP:\(dtstamp.toString())\n"
+            str += "DTSTAMP:\(dtstamp.toUTCString())\n"
         }
 //        if let summary = summary {
 //            str += "SUMMARY:\(summary)\n"
@@ -197,6 +177,6 @@ public func ==(lhs: Event, rhs: Event) -> Bool {
 
 extension Event: CustomStringConvertible {
     public var description: String {
-        return "\(dtstamp?.toString() ?? ""): \(summary ?? "")"
+        return "\(dtstamp?.toUTCString() ?? ""): \(summary ?? "")"
     }
 }

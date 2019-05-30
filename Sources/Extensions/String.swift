@@ -16,12 +16,12 @@ extension String {
     }
 
     /// Convert String to Date
-    func toDate() -> Date? {
-        return iCal.dateFormatter.date(from: self)
+    func toDate(withTZID tzid: String? = nil) -> Date? {
+        return TZID.dateFormatter(forTZID: tzid).date(from: self)
     }
 
     func toShortDate() -> Date? {
-        return iCal.shortDateFormatter.date(from: self)
+        return TZID.shortDateFormatter.date(from: self)
     }
 
     func getIntNumber() -> [Int] {
@@ -41,6 +41,26 @@ extension String {
             }
         }
         return (key, attributes)
+    }
+
+}
+
+
+/**
+ *  - Event Date Key String extension
+ */
+extension String {
+
+    func toEventDTDate(time: String?) -> Date? {
+        guard let time = time else { return nil }
+        let keyAttribute = formatKeyAttribute()
+        if keyAttribute.attributes["VALUE"] == "DATE" {
+            return time.toShortDate()
+        } else if let tzid = keyAttribute.attributes["TZID"], !time.hasSuffix("Z") {
+            return time.toDate(withTZID: tzid)
+        } else {
+            return time.toDate(withTZID: nil)
+        }
     }
 
 }
