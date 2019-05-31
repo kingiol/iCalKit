@@ -64,3 +64,31 @@ extension String {
     }
 
 }
+
+/**
+ *  UTF-8 String
+ */
+extension String {
+
+    func split(byUTF8Length length: Int) -> [String] {
+        var startIndex = self.utf8.startIndex
+        var results: [String] = []
+        while startIndex < self.utf8.endIndex {
+            let subString = validUTF8String(startIndex: startIndex, offsetLength: length)
+            results.append(subString.string)
+            startIndex = subString.endIndex
+        }
+        return results
+    }
+
+    func validUTF8String(startIndex: String.UTF8View.Index, offsetLength offset: Int) -> (string: String, endIndex: String.UTF8View.Index) {
+        let endIndex = self.utf8.index(startIndex, offsetBy: offset, limitedBy: self.utf8.endIndex) ?? self.utf8.endIndex
+        let string = String(self.utf8[startIndex..<endIndex])
+        if let string = string {
+            return (string, endIndex)
+        } else {
+            return validUTF8String(startIndex: startIndex, offsetLength: offset - 1)
+        }
+    }
+
+}

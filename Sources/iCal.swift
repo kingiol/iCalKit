@@ -34,34 +34,15 @@ public enum iCal {
         }
     }
 
-    // a text line in vcalendar can't exceed 75 chars
-    static fileprivate let maxLineChars = 75
+    // Content lines longer than 75 octets SHOULD be folded.
+    // a text line in vcalendar can't exceed 75 chars, we choice 74, because we then add a space before line ahead.
+    static fileprivate let maxLineChars = 74
     static public func normalize(cal: String) -> String {
         let icsContent = cal.components(separatedBy: "\n")
         var result = ""
         for line in icsContent {
-            if line.utf8.count < maxLineChars {
-                result += line + "\n";
-                continue
-            }
-            var theLine = line
-            var utf16Count = 20
-            while theLine.count > utf16Count {
-                let temp = String(theLine.prefix(utf16Count))
-                if temp.utf8.count > maxLineChars - 5 {
-                    if theLine.count != line.count { result += " " }
-                    result += temp + "\n"
-                    theLine.removeFirst(utf16Count)
-                    utf16Count = 20
-                } else {
-                    utf16Count += 1
-                }
-            }
-            
-            if !theLine.isEmpty {
-                if theLine.count != line.count { result += " " }
-                result += theLine + "\n"
-            }
+            let subLine = line.split(byUTF8Length: maxLineChars).enumerated().compactMap({ $0 == 0 ? $1 : " " + $1 }).joined(separator: "\n")
+            result += subLine + "\n"
         }
         return result
     }

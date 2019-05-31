@@ -192,4 +192,17 @@ END:VCALENDAR
         print("===== current date: \(string)")
     }
 
+    func testUTF8String() {
+        let string = "这是一个很好的东西的呢s🐮这是一个很好的s sjld很好的s sjld很好的s sjld很好的s sjldfjsl 你还是放大来十年的蓝方金东西的呢s🐮这是一跳脫字元跳🐎🐎🐎 🐎🐎🐎🐎脫字元个很好的东西的呢s🐮这是一个很好的东西的呢s🐮这是一个很好的东西的呢s🐮"
+        let subs = string.split(byUTF8Length: 30)
+        for sub in subs {
+            print("sub utf8 count: \(sub.utf8.count), string: \(sub)")
+        }
+
+        let calString = "KEY:xmdkfdsd\nValue:这是一个很好的东西的呢s🐮这是一个很好的s sjld很好的s sjld很好的s sjld很好的s sjldfjsl 你还是放大来十年的蓝方金东西的呢s🐮这是一跳脫字元跳🐎🐎🐎 🐎🐎🐎🐎脫字元个很好的东西的呢s🐮这是一个很好的东西的呢s🐮这是一个很好的东西的呢s🐮\nKey:HELOWEL\nVALUE: sdfwesdfsd很好很好的东西的呢s🐮这是的东西的呢s🐮这是一个很好很好的东西的呢s🐮这是的东西的"
+
+        let rawString = iCal.normalize(cal: calString)
+        print(rawString)
+    }
+
 }
