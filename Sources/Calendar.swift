@@ -22,7 +22,7 @@ public struct Calendar {
         return subComponents.compactMap({ $0 as? Event }).first
     }
 
-    public mutating func control(partStat: PartStat, forAddress address: String) {
+    public mutating func control(partStat: PartStat, forAddress address: String, newSummary: String? = nil) {
         method = .reply
         guard var event = firstEvent() else { return }
         let roles = event.roles.filter({ $0.partyType != .organizer && $0.mailto == address })
@@ -39,6 +39,7 @@ public struct Calendar {
 
         let organizer = firstEvent()?.roles.filter({ $0.partyType == .organizer }) ?? []
         event.roles = organizer + newRoles
+        if let summary = newSummary, !summary.isEmpty { event.summary = summary }
 
         subComponents[0] = event
     }
@@ -85,6 +86,6 @@ extension Calendar: CalendarComponent {
         }
 
         str += "END:VCALENDAR\n"
-        return str
+        return iCal.normalize(cal: str)
     }
 }

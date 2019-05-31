@@ -99,9 +99,9 @@ extension Event: CalendarComponent {
         if let dtstamp = dtstamp {
             str += "DTSTAMP:\(dtstamp.toUTCString())\n"
         }
-//        if let summary = summary {
-//            str += "SUMMARY:\(summary)\n"
-//        }
+        if let summary = summary {
+            str += "SUMMARY:\(summary)\n"
+        }
 //        if let location = location {
 //            str += "LOCATION:\(location)\n"
 //        }
@@ -131,7 +131,7 @@ extension Event: CalendarComponent {
         }
 
         str += "END:VEVENT"
-        return iCal.normalize(cal: str)
+        return str
     }
 }
 
