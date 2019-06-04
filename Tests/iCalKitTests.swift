@@ -154,9 +154,12 @@ END:VEVENT
 END:VCALENDAR
 """
 
-        let icals = try! iCal.load(string: ics)
-        let event = icals.first?.firstEvent()
-        print("...")
+        var ical = iCal.load(string: ics).first!
+
+        ical.control(partStat: .accepted, forAddress: "kingxiaokang@gmail.com")
+
+        print(ical.toCal())
+
     }
 
     func testUTCDate() {

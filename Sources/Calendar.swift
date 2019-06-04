@@ -8,9 +8,14 @@ public enum CalendarMethod: String {
 /// TODO add documentation
 public struct Calendar {
     public var subComponents: [CalendarComponent] = []
-    public var otherAttrs = [String:String]()
+    public var otherAttrs: [String: String] = [:]
+
+    public typealias Attribute = (key: String, value: String)
+    public var flowAttrs: [Attribute] = []
 
     public var method: CalendarMethod?
+    public var prodid: String?
+    public var version: String?
 
     public init(withComponents components: [CalendarComponent]?) {
         if let components = components {
@@ -22,8 +27,10 @@ public struct Calendar {
         return subComponents.compactMap({ $0 as? Event }).first
     }
 
-    public mutating func control(partStat: PartStat, forAddress address: String, newSummary: String? = nil) {
+    public mutating func control(partStat: PartStat, forAddress address: String, newSummary: String? = nil, prodid: String = "-//Chirpeur Inc //Chirp Mail", version: String = "2.0") {
         method = .reply
+        self.prodid = prodid
+        self.version = version
         guard var event = firstEvent() else { return }
         let roles = event.roles.filter({ $0.partyType != .organizer && $0.mailto == address })
         var newRoles: [EventRole] = []
@@ -40,6 +47,8 @@ public struct Calendar {
         let organizer = firstEvent()?.roles.filter({ $0.partyType == .organizer }) ?? []
         event.roles = organizer + newRoles
         if let summary = newSummary, !summary.isEmpty { event.summary = summary }
+
+        event.descr = nil
 
         subComponents[0] = event
     }
@@ -60,10 +69,16 @@ extension Calendar: IcsElement {
             if let method = CalendarMethod(rawValue: value) {
                 self.method = method
             } else {
-                otherAttrs[attr] = value
+//                otherAttrs[attr] = value
+                flowAttrs.append((attr, value))
             }
+        case "PRODID":
+            self.prodid = value
+        case "VERSION":
+            self.version = value
         default:
-            otherAttrs[attr] = value
+//            otherAttrs[attr] = value
+            flowAttrs.append((attr, value))
         }
     }
 
@@ -77,7 +92,19 @@ extension Calendar: CalendarComponent {
             str += "METHOD:\(method.rawValue)\n"
         }
 
+        if let prodid = prodid {
+            str += "PRODID:\(prodid)\n"
+        }
+
+        if let version = version {
+            str += "VERSION:\(version)\n"
+        }
+
         for (key, val) in otherAttrs {
+            str += "\(key):\(val)\n"
+        }
+
+        for (key, val) in flowAttrs {
             str += "\(key):\(val)\n"
         }
 
